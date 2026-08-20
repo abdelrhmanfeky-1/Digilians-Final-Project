@@ -1,0 +1,145 @@
+# Data Quality Issues README
+## Supply Chain Final Project
+
+This README documents the **currently identified data-quality issues only**.
+
+It does **not** include cleaning steps, SQL fixes, transformation logic, or final validation rules. Those will be documented separately after the team completes the full data review.
+
+---
+
+## Dataset Overview
+
+- Total tables: **31**
+- Total records: **200,000**
+- Currently documented issue groups: **9**
+- Total documented affected records/cells: **88**
+
+ the dataset does not contain structural problems such as duplicate primary keys, broken foreign keys, negative inventory balances, or quantity-balance errors.
+
+
+# Identified Data Quality Issues
+
+## 1. Customers — `customer_name`
+**Issue:** Leading/trailing spaces  
+**Affected cases:** 18
+
+### Description
+Some customer names contain unnecessary spaces before or after the actual value.
+
+### Potential impact
+This may cause the same customer to appear as different values during grouping, matching, Pivot Table analysis, or Power BI reporting.
+
+---
+
+## 2. Customers — `city`
+**Issue:** Inconsistent casing and trailing spaces  
+**Affected cases:** 16
+
+### Description
+Some city/governorate values use inconsistent capitalization or contain surrounding spaces.
+
+### Potential impact
+The same location may appear as multiple categories in analysis.
+
+---
+
+## 3. Customers — `email`
+**Issue:** Missing values  
+**Affected cases:** 8
+
+### Description
+Some customer records contain empty or missing email values.
+
+### Potential impact
+This reduces data completeness and may affect customer-contact or communication analysis.
+
+---
+
+## 4. Customers — `email`
+**Issue:** Mixed case and surrounding spaces  
+**Affected cases:** 12
+
+### Description
+Some existing email addresses contain uppercase letters and/or surrounding spaces.
+
+### Potential impact
+This may create inconsistencies during matching, deduplication, validation, or integration with other systems.
+
+---
+
+## 5. Customers — `customer_type`
+**Issue:** Inconsistent category casing  
+**Affected cases:** 12
+
+### Description
+Some customer-type categories are written using different capitalization styles.
+
+Examples include category variants such as:
+- `DISTRIBUTOR`
+- `reseller`
+
+### Potential impact
+The same customer type may be treated as multiple categories during reporting and segmentation.
+
+---
+
+## 6. Customers — `address`
+**Issue:** Repeated internal spaces  
+**Affected cases:** 10
+
+### Description
+Some customer addresses contain multiple consecutive spaces between words.
+
+### Potential impact
+This reduces text consistency and may affect address searching, matching, or comparison.
+
+---
+
+## 7. Suppliers — `supplier_name`
+**Issue:** Leading/trailing spaces  
+**Affected cases:** 3
+
+### Description
+Some supplier names contain spaces before or after the actual value.
+
+### Potential impact
+A supplier may appear as separate values in reports or during matching with other datasets.
+
+---
+
+## 8. Suppliers — `city`
+**Issue:** Inconsistent casing and trailing spaces  
+**Affected cases:** 3
+
+### Description
+Some supplier city values have inconsistent capitalization and/or trailing spaces.
+
+Examples include:
+- `ASSIUT`
+- `Dakahlia`
+
+### Potential impact
+Supplier geographic analysis may contain fragmented categories.
+
+---
+
+## 9. Materials — `material_category`
+**Issue:** Category casing and trailing spaces  
+**Affected cases:** 6
+
+### Description
+Some material categories are written using inconsistent casing or contain trailing spaces.
+
+Examples include category variants such as:
+- `display`
+- `Display`
+
+### Potential impact
+The same material category may appear as multiple groups in procurement, inventory, or quality analysis.
+
+---
+
+# Business Events That Are Not Data Quality Problems
+
+
+--
